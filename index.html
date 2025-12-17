@@ -61,6 +61,43 @@
         }
 
         #error-log { display: none; position: absolute; top: 0; left: 0; color: red; background: rgba(0,0,0,0.8); z-index: 999; padding: 10px; }
+        #welcome-letter {
+    position: absolute;
+    top: 45%; /* Căn giữa theo chiều dọc */
+    left: 50%; /* Căn giữa theo chiều ngang */
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    background-color: #fff9e6; /* Màu giấy thư cổ điển */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    z-index: 101; /* Đảm bảo hiện trên lớp nền đen */
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #333;
+    text-align: center;
+    border: 3px double #d4a017; /* Viền vàng sang trọng */
+}
+
+.letter-content h2 {
+    color: #c0392b; /* Màu đỏ Giáng sinh */
+    margin-top: 0;
+    font-size: 22px;
+}
+
+.letter-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.signature {
+    margin-top: 20px;
+    font-style: italic;
+    font-weight: bold;
+    text-align: right;
+    color: #555;
+}
     </style>
 </head>
 <body>
@@ -70,8 +107,18 @@
     <div id="ui-layer">
        
         <div class="guide">
-            🖐 <b>xòe tay ra nào :</b> quà mở ra nè &nbsp;|&nbsp; 🫶 <b>Heart:</b> làm hình trái tim đi &nbsp;|&nbsp; ✊ <b>nắm lại :</b> Tree
+            🖐 <b>xòe tay ra nào :</b> để mở quà nha gái &nbsp;|&nbsp; 🫶 <b>Heart:</b> làm hình trái tim đi &nbsp;|&nbsp; ✊ <b>nắm lại :</b> Tree
         </div>
+        <div id="welcome-letter">
+    <div class="letter-content">
+        <h2>Gửi [Em Oanh ^.^]! 🎄</h2>
+        <p>Chào Oanh nhá, vì đây chỉ là học mót nên sẽ không có gì đặc biệt T_T.</p>
+        <p>Chúc Oanh ngày càng xing gái, học giỏi đạt được nhiều thành tựu hơn trong học tập và công việc,</p>
+        <p>Đặc biệt là luôn tích cực trong mọi hoàn cảnh, cho dù có gặp  khó khăn và chuyện buồn gì đi nữa.</p>
+        <p>Giờ thì xòe bàn tay ra trước camera để nhận điều kỳ diệu nhé!</p>
+        <p>Chúc Oanh một mùa noel thật ấm áp và vui vẻ.</p>
+        <div class="signature">Thân, [fuong dep trai hihi!]</div>
+    </div>
         <button id="btnStart" onclick="startSystem()">fuongw^_^</button>
     </div>
 
@@ -471,10 +518,13 @@
         }
 
         function startSystem() {
+    // Dòng bạn vừa thêm mới:
+    document.getElementById('welcome-letter').style.display = 'none';
+
             document.getElementById('btnStart').style.display = 'none';
             bgMusic.play().catch(e => console.log(e));
-            init3D();
-
+            init3D(); 
+        
             const video = document.getElementsByClassName('input_video')[0];
             const canvas = document.getElementById('camera-preview');
             const ctx = canvas.getContext('2d');
